@@ -9,7 +9,10 @@ Na logística é muito importante saber a saúde do estoque isso se reflete na q
 ## *Visão do Projeto1*
    Nessa projeção, estamos observando um estoque e período de vendas agitado, final de ano, e uma tentativa arriscada sobre o over do estoque olhamos os seguintes meses: Setembro, outubro, novembro, dezembro e janeiro.
 Queremos obter resultado se a técnica de comprar o estoque geral acima da média geraria gargalos grandes ou pequenos impactos, sabendo que o estoque foi comprado anteriormente ao período de agitação da época de vendas  
-![Alerta Excel Setembro](imagens/alerta_do_excel_setembro.png)
+
+
+<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/alerta_do_excel_setembro.png"/>
+
 
 ## *Etapas de criação*
   As bases que você vai encontrar já estão trabalhadas com formulas e em sua versão final, são bases xlsx, algumas estão apenas para guia em uso no sql ou python.
@@ -46,29 +49,32 @@ Imagem aqui.
 
 As medidas foram feitas em dax e divididas em pastas para cada necessidade:
 
-imagem aqui
+<img width="250" height="250" src="OneDrive/Área de Trabalho/GitImagens/Medidas.png"/>
 
-Imagem aqui
+<img width="250" height="1000" src="OneDrive/Área de Trabalho/GitImagens/Medidas_estoque.png"/>
 
 
 3 - *Construção de dashboard*  
-Para essa parte de dashboard usamos o método estrela (star scherma), para controlar os relacionamentos:
+Para essa parte de dashboard usamos o método estrela (star scherma), para controlar os relacionamentos:  
 
-Imagem aqui
+<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/relacionamentos.png"/>
+
 
 Mantendo assim a qualidade dos dados nos meios de relacionamento 1 para muitos, tendo várias tabelas Dimensões e 2 fatos com as de vendas e as de estoque:
 
-Imagem aqui
+I<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/relacionamentos_1_pra muitos.png"/>
+
 
 Em sua montagem final a imagem escolhida foi o balanceamento entre um dashboard sem tantas cores em um fundo mais panorâmico e o uso de suas cores em camadas parecidas usando apenas cores de realce em alguns itens que queremos ressaltar como: maiores e menores vendas e sua categoria de estoque:
 
-Imagem aqui
+<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/dashboard_inicial.jpg"/>
+
 
 O dashboard em si tem muitas informações que geram insights de como está o atual momento do estoque e sua visão já moldada de curva, giro, categoria, valor e quantidade no estoque, então pode se gerar a dúvida diária como valor de estoque em cada mês e quantidade de giro relacionada aos meses então utilizei de tooltips para trazer essa informação sem deixar o dashboard mais cheio de visões que já está: 
 
-imagem aqui 
+<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/Imagem_tooltips_giro.png"/>
 
-Imagem aqui
+<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/imagem_tooltips_soma_do_estoque.png"/>
 
 # *Resultado da Análise*
 Com o dashboard concluído, conseguimos extrair insights importantes para a operação logística e comercial:
