@@ -1,115 +1,115 @@
-# *Projeto1 Dashboard de estoque logistico*
-## *Explicação do projeto*
-O trabalho a seguir é uma visão de estoque nível nacional, primeiro buscasse nesse trabalho entender a atual questão do estoque, os números, saúde, visão ampla para depois podermos explorar os insights, este trabalho terá crescimento de tempo, é um projeto próprio: bases e analises todas criadas por mim.
+# Análise de Saúde de Estoque — Período de Alta Demanda (set–jan)
 
-## *Introdução a ideia do projeto e logística*
-Na logística é muito importante saber a saúde do estoque isso se reflete na quantidade atual do estoque, na sua curva abc, seu giro de estoque, custo das mercadorias.
- 	Tudo isso precisamos de algumas coisas importantes: histórico de estoque, histórico de vendas, base de sku atualizadas, KPI bem definidos, e é isso que mostro nesse primeiro pequeno trabalho.
+> Dashboard analítico de estoque nacional construído do zero: ETL, modelagem de dados e Power BI.
+> Projeto autoral — bases geradas, tratadas e modeladas por mim.
 
-## *Visão do Projeto1*
-   Nessa projeção, estamos observando um estoque e período de vendas agitado, final de ano, e uma tentativa arriscada sobre o over do estoque olhamos os seguintes meses: Setembro, outubro, novembro, dezembro e janeiro.
-Queremos obter resultado se a técnica de comprar o estoque geral acima da média geraria gargalos grandes ou pequenos impactos, sabendo que o estoque foi comprado anteriormente ao período de agitação da época de vendas  
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
+![DAX](https://img.shields.io/badge/DAX-0078D4?style=flat&logo=microsoft&logoColor=white)
+![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
 
+---
+
+## Contexto de negócio
+
+Na logística, saber a saúde do estoque é crítico. Este projeto simula um cenário real:
+uma empresa que adquiriu estoque **acima da média** antes do período de pico (set–jan)
+para evitar ruptura — e analisa se essa decisão gerou gargalos ou ganhos operacionais.
+
+**Pergunta central:** comprar over-stock antes do pico gera retorno ou problema?
+
+---
+
+## O que o dashboard responde
+
+- Como está a distribuição da curva ABC do estoque?
+- Qual o giro de estoque mês a mês e seu custo associado?
+- Houve melhoria ou deterioração no controle de inventário ao longo do período?
+- Onde estão as maiores e menores vendas por categoria?
+
+---
+
+## Arquitetura do projeto
+
+```
+Bases brutas (xlsx)
+    │
+    ▼
+ETL — Excel + Power Query (M)
+    │  limpeza · padronização · nomenclatura · governança
+    ▼
+Modelagem — Star Schema no Power BI
+    │  2 tabelas fato (vendas + estoque) · N dimensões
+    ▼
+Medidas DAX (organizadas em pastas por contexto)
+    │
+    ▼
+Dashboard final
+```
+
+---
+
+## Principais insights
+
+### Curva ABC
+A distribuição obtida foge do padrão esperado, indicando concentração irregular no grupo A
+e necessidade de revisão das políticas de reposição e priorização de SKUs.
+
+### Giro x Custo
+Entre setembro e dezembro houve crescimento significativo no giro com redução no custo total
+do estoque — movimento que sugere ganho operacional real no período de pico.
+
+### Lucro x Margem
+Os valores de lucro ainda não incorporam descontos comerciais dos primeiros meses,
+reforçando a importância de integrar dados logísticos e financeiros para visão de margem real.
+
+---
+
+## Tecnologias utilizadas
+
+| Ferramenta | Finalidade |
+|---|---|
+| Excel + Power Query (M) | ETL: ingestão, limpeza, normalização |
+| Power BI (DAX) | Modelagem, medidas e dashboard final |
+| SQL | Análises exploratórias e validação |
+| ChatGPT / Claude / DeepSeek | Geração das bases fictícias e revisão estrutural |
+
+---
+## Imagens do dashboard
 
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/alerta_do_excel_setembro.png"/>
-
-
-## *Etapas de criação*
-  As bases que você vai encontrar já estão trabalhadas com formulas e em sua versão final, são bases xlsx, algumas estão apenas para guia em uso no sql ou python.
-A estrutura dos skus foram criadas com prompt através de LLM como ChatGPT e deepseek, foi se pensado através de vivências minhas na logística como CLT e como consultora de pequenos negócios locais, usei de estruturas que foram vistas em períodos que estive frente a frente com demandas logísticas.
-Bases de vendas foram feitas através de prompts usando o ChatGPT e o Claude para revisar as bases corretamente. 
-
-## *Bases do projeto1*
-
-Bases usadas para o Projeto1:  
-estoquesGit,   
-vendas_dezembro_com_clientes_git,   
-vendas_novembro_2024_git,  
- vendas_outubro_com_clientes_git,  
- vendas_setembro_com_clientes_git  
-## *Etapas de ETL*
-•	 Organização das bases,  
-•	Organização de nomenclaturas,  
-•	Organização e limpeza,  
-•	Governança de dados,  
-•	Estruturação de medidas,  
-•	Construção do dashboard,  
- 1 – *organização das bases, governança de dados, nomenclatura *
- 
- foi feito uma visão para garantir os dados corretos, normalmente em alguns WMS não se guarda a visão do estoque em (x) dia ou (x) mês, então se usa ferramentas como banco de dados: Excel ou sql, no nosso caso a “equipe” guardou os arquivos em Excel, foi usado algumas medidas dentro do Excel para se criar uma visão necessária como:  
-
- 
-  “ULTIMO_ABASTECIMENTO_DEZEMBRO” e “ESTOQUE_MES”  
-
-  
-  Garantindo assim que teríamos a visão correta do custo gasto no mês em questão e a o mês em questão para a visão mensal pois o estoque estava detalhado com o mês apenas pelas abas, esse trabalho poderia ser feito pelo Power querry facilmente, mas o intuito desde o inicio era fazer uma junção dos períodos de venda e estoque, que poderia se gerar várias partes de limpeza e manutenção das tabelas fazendo assim o PBI ficar lento e instável.
- também foi visado a troca de nomenclaturas das colunas e títulos agregando valor ao uso seguro no PBI, SQL e Python (a mesma base irá para o kaggle).  
-Imagem aqui.  
-2 - *Estruturação de medidas*
-
-As medidas foram feitas em dax e divididas em pastas para cada necessidade:
 
 <img width="250" height="250" src="OneDrive/Área de Trabalho/GitImagens/Medidas.png"/>
 
 <img width="250" height="1000" src="OneDrive/Área de Trabalho/GitImagens/Medidas_estoque.png"/>
 
-
-3 - *Construção de dashboard*  
-Para essa parte de dashboard usamos o método estrela (star scherma), para controlar os relacionamentos:  
-
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/relacionamentos.png"/>
-
-
-Mantendo assim a qualidade dos dados nos meios de relacionamento 1 para muitos, tendo várias tabelas Dimensões e 2 fatos com as de vendas e as de estoque:
 
 I<img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/relacionamentos_1_pra muitos.png"/>
 
-
-Em sua montagem final a imagem escolhida foi o balanceamento entre um dashboard sem tantas cores em um fundo mais panorâmico e o uso de suas cores em camadas parecidas usando apenas cores de realce em alguns itens que queremos ressaltar como: maiores e menores vendas e sua categoria de estoque:
-
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/dashboard_inicial.jpg"/>
-
-
-O dashboard em si tem muitas informações que geram insights de como está o atual momento do estoque e sua visão já moldada de curva, giro, categoria, valor e quantidade no estoque, então pode se gerar a dúvida diária como valor de estoque em cada mês e quantidade de giro relacionada aos meses então utilizei de tooltips para trazer essa informação sem deixar o dashboard mais cheio de visões que já está: 
 
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/Imagem_tooltips_giro.png"/>
 
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/imagem_tooltips_soma_do_estoque.png"/>
 
-# *Resultado da Análise*
-Com o dashboard concluído, conseguimos extrair insights importantes para a operação logística e comercial:
-## *Curva ABC*
-A curva ABC obtida não apresenta a distribuição típica esperada, indicando:
-•	concentração irregular de itens no grupo A
-•	possível distorção no mix de produtos
-•	necessidade de revisar políticas de estoque, priorização e reposição
-Esse comportamento reforça a necessidade de uma análise mais profunda sobre mix de vendas, giro e margem por categoria.
-________________________________________
-## *Giro e Custo de Estoque*
-A análise temporal mostrou:
-•	crescimento significativo no giro do estoque entre setembro e dezembro, sugerindo aumento de demanda ou melhoria nos processos de reposição
-•	redução no custo total do estoque, indicando melhor controle de inventário ou maior assertividade nas reposições
-Esses dois movimentos juntos sugerem ganho operacional.
-________________________________________
-# *Lucro e Descontos*
-Apesar do lucro apresentado nas vendas, ainda não foram aplicados os descontos comerciais e promocionais fornecidos pela equipe comercial nos primeiros meses.
-Isso reforça a importância de integrar informações logísticas com dados financeiros para obter uma visão de margem mais precisa.
-________________________________________
-# *Valor Analítico do Dashboard*
-Este dashboard teve como objetivo produzir uma análise descritiva com foco em gerar perguntas, não apenas respostas.
-Sem fazer as perguntas corretas, não conseguimos direcionar investigações futuras — é essa curiosidade que habilita análises diagnósticas e preditivas posteriores.
-A visualização funciona como:
-•	um guia estrutural das forças e fraquezas do estoque (SWOT operacional)
-•	uma espinha dorsal de insights, orientando tomadas de decisão
-•	uma base sólida para evoluir para modelos de previsão de demanda e otimização de estoque
 
-| Tecnologia / Ferramenta                                   | Finalidade                                                                                   |
-|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| Claude, ChatGPT, Gemini, DeepSeek                         | Suporte à construção lógica do projeto, revisão textual e otimização das estruturas analíticas |
-| Excel + Power Query (Linguagem M)                         | ETL completo: ingestão, limpeza, normalização e padronização dos dados                       |
-| Excel                                                     | Análises descritivas, tabelas dinâmicas e visualizações preliminares                         |
-| Power BI (DAX)                                            | Modelagem analítica, criação de medidas e desenvolvimento do dashboard final                 |
+## Estrutura do repositório
 
+```
+/bases          → arquivos xlsx tratados (estoque + vendas set–jan)
+/imagens        → capturas do dashboard e modelagem
+README.md       → este documento
+```
 
+---
 
+## Próximos passos
 
+- [ ] Publicar dashboard no Power BI Service (link público)
+- [ ] Adicionar análise SQL complementar
+- [ ] Expandir para modelo preditivo de demanda
+
+---
+
+**Bruna Karine** · [LinkedIn](https://www.linkedin.com/in/brunakarine/) · [GitHub](https://github.com/BrunaKarineVEB)
