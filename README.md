@@ -75,7 +75,7 @@ reforçando a importância de integrar dados logísticos e financeiros para vis�
 | ChatGPT / Claude / DeepSeek | Geração das bases fictícias e revisão estrutural |
 
 ---
-## Imagens do dashboard
+## Imagens do projeto
 
 <img width="1917" height="1018" src="OneDrive/Área de Trabalho/GitImagens/alerta_do_excel_setembro.png"/>
 
