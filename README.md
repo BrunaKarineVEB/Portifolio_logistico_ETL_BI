@@ -1,7 +1,7 @@
 # Análise de Saúde de Estoque — Período de Alta Demanda (set–jan)
 
 > Dashboard analítico de estoque nacional construído do zero: ETL, modelagem de dados e Power BI.
-> Projeto autoral — bases geradas, tratadas e modeladas por mim.
+> Projeto autoral bases geradas, tratadas e modeladas por mim.
 
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-0078D4?style=flat&logo=microsoft&logoColor=white)
@@ -57,7 +57,7 @@ e necessidade de revisão das políticas de reposição e priorização de SKUs.
 
 ### Giro x Custo
 Entre setembro e dezembro houve crescimento significativo no giro com redução no custo total
-do estoque — movimento que sugere ganho operacional real no período de pico.
+do estoque movimento que sugere ganho operacional real no período de pico.
 
 ### Lucro x Margem
 Os valores de lucro ainda não incorporam descontos comerciais dos primeiros meses,
