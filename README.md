@@ -72,7 +72,7 @@ reforçando a importância de integrar dados logísticos e financeiros para vis�
 | Excel + Power Query (M) | ETL: ingestão, limpeza, normalização |
 | Power BI (DAX) | Modelagem, medidas e dashboard final |
 | SQL | Análises exploratórias e validação |
-| ChatGPT / Claude / DeepSeek | Geração das bases fictícias e revisão estrutural |
+| Geração de dados fictícios para simulação de cenário real |
 
 ---
 ## Imagens do projeto
